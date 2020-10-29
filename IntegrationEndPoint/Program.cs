@@ -18,16 +18,17 @@ namespace IntegrationEndPoint
         {
 #if DEBUG
             //Application.Run(new frmIntergrationEndPoint());
+
             IntegrationEndPoint myservices = new IntegrationEndPoint();
             myservices.onDebug();
             System.Threading.Thread.Sleep(System.Threading.Timeout.Infinite);
 #else
-            ServiceBase[] ServicesToRun;
-            ServicesToRun = new ServiceBase[]
-            {
-                new IntegrationEndPoint()
-            };
-            ServiceBase.Run(ServicesToRun);
+            //ServiceBase[] ServicesToRun;
+            //ServicesToRun = new ServiceBase[]
+            //{
+            //    new IntegrationEndPoint()
+            //};
+            //ServiceBase.Run(ServicesToRun);
 #endif
             //ServiceBase[] ServicesToRun;
             //ServicesToRun = new ServiceBase[]

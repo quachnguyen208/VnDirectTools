@@ -15,7 +15,7 @@ namespace IntegrationEndPoint
 {
     public partial class IntegrationEndPoint : ServiceBase
     {
-        System.Timers.Timer timer = new System.Timers.Timer();
+        Timer timer = new Timer();
         public IntegrationEndPoint()
         {
             InitializeComponent();
@@ -33,7 +33,7 @@ namespace IntegrationEndPoint
         {
             // TODO: Add code here to start your service.
             timer.Elapsed += new ElapsedEventHandler(OnElapsedTime);
-            timer.Interval = int.Parse(ConfigurationManager.AppSettings["MinutesInterval"]);            
+            timer.Interval = int.Parse(ConfigurationManager.AppSettings["MinutesInterval"])*60000;            
             timer.Enabled = true;
             Log.Create("IntegrationEndPoint", "OnStart", "Service is started at " + DateTime.Now);
 
@@ -56,31 +56,17 @@ namespace IntegrationEndPoint
             string ToDate = ConfigurationManager.AppSettings["ToDate"];
 
             if (CreateDate == string.Empty)
-            {
-                CreateDate = DateTime.Now.ToString("yyyy-MM-dd");
-                
-            }
+            {CreateDate = DateTime.Now.ToString("yyyy-MM-dd");}
             else if (CreateDate.Length < 3)
-            {
-                CreateDate = DateTime.Now.AddDays(double.Parse(CreateDate)).ToString("yyyy-MM-dd");
-                
-            }
-
+            {CreateDate = DateTime.Now.AddDays(double.Parse(CreateDate)).ToString("yyyy-MM-dd");}
             if (FromDate == string.Empty)
-            {
-                FromDate = DateTime.Now.ToString("yyyy-MM-dd");                
-            }
+            {FromDate = DateTime.Now.ToString("yyyy-MM-dd");}
             else if (FromDate.Length < 3)
-            {
-                FromDate = DateTime.Now.AddDays(double.Parse(FromDate)).ToString("yyyy-MM-dd");                
-            }
-
+            {FromDate = DateTime.Now.AddDays(double.Parse(FromDate)).ToString("yyyy-MM-dd");}
             if (ToDate == string.Empty)
-            {
-                ToDate = DateTime.Now.ToString("yyyy-MM-dd");                
-            }
+            {ToDate = DateTime.Now.ToString("yyyy-MM-dd");}
             else if (ToDate.Length < 3)
-            { ToDate = DateTime.Now.AddDays(double.Parse(ToDate)).ToString("yyyy-MM-dd"); }
+            { ToDate = DateTime.Now.AddDays(double.Parse(ToDate)).ToString("yyyy-MM-dd");}
 
             if (Code == string.Empty)
             {
@@ -110,9 +96,10 @@ namespace IntegrationEndPoint
                     {
                         foreach (var item in response.Result)
                         {
-                            DataAccess.Customer_DA.Create(item.cc_id, item.cc_fullname, item.cc_phone, item.cc_address, item.cc_subregion.ToString(), item.cc_region.ToString()
+                            DataAccess.Customer_DA.Create(item.cc_id.ToString(), item.cc_fullname.ToString()
+                                , item.cc_phone.ToString(), item.cc_address.ToString(), item.cc_subregion.ToString(), item.cc_region.ToString()
                                 , item.cc_datecreated.ToString());
-                            FileLog.WriteFileLog("Run [API] Customer[" + item.cc_id + "  " + item.cc_phone + "]");
+                            FileLog.WriteFileLog("Run [API] Customer[" + item.cc_id.ToString() + "  " + item.cc_phone.ToString()+ "]");
                         }
 
                     }
