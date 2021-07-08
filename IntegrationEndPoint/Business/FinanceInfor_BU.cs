@@ -13,8 +13,8 @@ namespace IntegrationEndPoint.Business
     {
         public class API
         {  
-                     public static string PostUrlVietStock(string url, string postData)
-        {
+        public static string PostUrlVietStock(string url, string postData)
+        {                
             string result = "";
             try
             {
@@ -32,7 +32,6 @@ namespace IntegrationEndPoint.Business
                 using (Stream reqStream = req.GetRequestStream())
                 {
                     reqStream.Write(data, 0, data.Length);
-
                     reqStream.Close();
                 }
 
@@ -43,10 +42,12 @@ namespace IntegrationEndPoint.Business
                     result = reader.ReadToEnd();
                 }
             }
-            catch (Exception e) 
+            catch (Exception ex) 
             {
-                
+                    Utilities.FileLog.WriteFileLog("API-->FinanceInfor-->FinanceInfor::Data" + Environment.NewLine + postData);
+                    Utilities.FileLog.WriteFileLog("API-->FinanceInfor-->POST::" + ex.Message);                
             }
+            
             return result;
         }
         }

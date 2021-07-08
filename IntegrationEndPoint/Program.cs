@@ -14,14 +14,18 @@ namespace IntegrationEndPoint
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
+        /// 
+        [STAThread]
         static void Main()
         {
 #if DEBUG
             //Application.Run(new frmIntergrationEndPoint());
+            
+            Application.Run(new frmRequestFinance());
 
-            IntegrationEndPoint myservices = new IntegrationEndPoint();
-            myservices.onDebug();
-            System.Threading.Thread.Sleep(System.Threading.Timeout.Infinite);
+            // IntegrationEndPoint myservices = new IntegrationEndPoint();
+            // myservices.onDebug();
+            // System.Threading.Thread.Sleep(System.Threading.Timeout.Infinite);
 #else
             //ServiceBase[] ServicesToRun;
             //ServicesToRun = new ServiceBase[]

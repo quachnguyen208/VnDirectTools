@@ -131,65 +131,107 @@ namespace IntegrationEndPoint
             }
         }
 
+        public void FinanceInfor(string symbol,string postdata)
+        {
+            try
+            {
+                Object.FinanceInfor_Response response = new Object.FinanceInfor_Response();
+
+                    //request.createdate = createdate;
+                    string url = "https://finance.vietstock.vn/data/financeinfo";
+                    string result = string.Empty;
+                    result = Business.FinanceInfor.API.PostUrlVietStock(url, postdata);
+                    DataAccess.FinanceInforResult.Create(txtSymbol.Text, result);
+                    FileLog.WriteFileLog(result);
+                    //response = Business.FinanceInfor.API.PostUrlVietStock(url, postdata);
+                    //                    response = Business.FinanceInfor.API.POST<Object.FinanceInfor_Response>(url, postdata);
+                    //                    if (response.Result.Count > 0)
+                    //                    {
+                    //                        foreach (var item in response.Result)
+                    //                        {
+                    //                            DataAccess.FinanceInfor.Create(item.ID,item.ReportNormID,item.Name,item.NameEn,item.NameMobile,item.NameMobileEn,item.CssStyle,item.Padding,item.ParentReportNormID,item.ReportComponentName,item.ReportComponentNameEn,
+                    //item.Unit,item.UnitEn,item.OrderType,item.OrderingComponent,item.RowNumber,item.ReportComponentTypeID,item.ChildTotal,item.Levels,item.Value1,item.Value2,item.Value3,item.Value4);
+                    //                            FileLog.WriteFileLog("Run [API] FinanceInfor[" + item.ID + "  " + item.ReportNormID+ "]");
+                    //                        }
+
+                    //                    }
+
+            }
+            catch (Exception ex)
+            {
+                FileLog.WriteFileLog("Exception [API-Customer]" + ex.Message.ToString());
+            }
+        }
+
         private void btnPost_Click(object sender, EventArgs e)
         {
-            string Code = ConfigurationManager.AppSettings["Code"];            
-            string CreateDate = ConfigurationManager.AppSettings["CreateDate"];
-            string FromDate = ConfigurationManager.AppSettings["FromDate"];
-            string ToDate = ConfigurationManager.AppSettings["ToDate"];
 
-            if (CreateDate == string.Empty)
-            {
-                CreateDate = DateTime.Now.ToString("yyyy-MM-dd");
-                txtValue1.Text = CreateDate.ToString();
-            }
-            else if (CreateDate.Length < 3)
-            {
-                CreateDate = DateTime.Now.AddDays(double.Parse(CreateDate)).ToString("yyyy-MM-dd");
-                txtValue1.Text = CreateDate.ToString();
-            }
-            else
-            {
-                txtValue1.Text = CreateDate.ToString();
-            }
+            FinanceInfor(txtSymbol.Text, string.Format("Code={0}&ReportType={1}&ReportTermType=2&Unit=1000000&Page=1&PageSize=4&__RequestVerificationToken=aSECC8KYhwscu4wZ301Y2drwR60CgpszHYiEERRUvpyopDRNhqbV5kYL1v1GhTN1D4eAOD3DiMIyfaStY1OUFjT-D2wloeyzwDJjMwVQ6iXtmO4Yt9qgOd8c4kLPNZ52raoSqYF3H9VLu_ycvtseOg2", txtSymbol.Text, "BCTC"));
 
-
-            if (FromDate == string.Empty)
-            {
-                FromDate = DateTime.Now.ToString("yyyy-MM-dd");
-                txtValue2.Text = FromDate.ToString();
-            }
-            else if (FromDate.Length < 3)
-            {
-                FromDate = DateTime.Now.AddDays(double.Parse(FromDate)).ToString("yyyy-MM-dd");
-                txtValue2.Text = FromDate.ToString();
-            }
-            else
-            { txtValue2.Text = FromDate.ToString(); }
-
-            if (ToDate == string.Empty)
-            {
-                ToDate = DateTime.Now.ToString("yyyy-MM-dd");
-                txtValue3.Text = ToDate.ToString();
-            }
-            else if (ToDate.Length < 3)
-            { ToDate = DateTime.Now.AddDays(double.Parse(ToDate)).ToString("yyyy-MM-dd"); }
-            else
-            { txtValue3.Text = ToDate.ToString(); }
-
-
-            if (Code == string.Empty)
-            {
-                Customer("datacustomer", CreateDate);
-                SalesOrder("saleorders", FromDate, ToDate);
-                SalesOrderDetail("orderdetail", FromDate, ToDate);
-            }
-            else if (Code == "datacustomer")
-            { Customer(Code,CreateDate); }
-            else if (Code == "saleorders")
-            { SalesOrder(Code,FromDate, ToDate); }
-            else if (Code == "orderdetail")
-            { SalesOrderDetail(Code,FromDate, ToDate); }
         }
+        
+
+        //private void btnPost_Click(object sender, EventArgs e)
+        //{
+
+
+        //    //string Code = ConfigurationManager.AppSettings["Code"];            
+        //    //string CreateDate = ConfigurationManager.AppSettings["CreateDate"];
+        //    //string FromDate = ConfigurationManager.AppSettings["FromDate"];
+        //    //string ToDate = ConfigurationManager.AppSettings["ToDate"];
+
+        //    //if (CreateDate == string.Empty)
+        //    //{
+        //    //    CreateDate = DateTime.Now.ToString("yyyy-MM-dd");
+        //    //    txtValue1.Text = CreateDate.ToString();
+        //    //}
+        //    //else if (CreateDate.Length < 3)
+        //    //{
+        //    //    CreateDate = DateTime.Now.AddDays(double.Parse(CreateDate)).ToString("yyyy-MM-dd");
+        //    //    txtValue1.Text = CreateDate.ToString();
+        //    //}
+        //    //else
+        //    //{
+        //    //    txtValue1.Text = CreateDate.ToString();
+        //    //}
+
+
+        //    //if (FromDate == string.Empty)
+        //    //{
+        //    //    FromDate = DateTime.Now.ToString("yyyy-MM-dd");
+        //    //    txtValue2.Text = FromDate.ToString();
+        //    //}
+        //    //else if (FromDate.Length < 3)
+        //    //{
+        //    //    FromDate = DateTime.Now.AddDays(double.Parse(FromDate)).ToString("yyyy-MM-dd");
+        //    //    txtValue2.Text = FromDate.ToString();
+        //    //}
+        //    //else
+        //    //{ txtValue2.Text = FromDate.ToString(); }
+
+        //    //if (ToDate == string.Empty)
+        //    //{
+        //    //    ToDate = DateTime.Now.ToString("yyyy-MM-dd");
+        //    //    txtValue3.Text = ToDate.ToString();
+        //    //}
+        //    //else if (ToDate.Length < 3)
+        //    //{ ToDate = DateTime.Now.AddDays(double.Parse(ToDate)).ToString("yyyy-MM-dd"); }
+        //    //else
+        //    //{ txtValue3.Text = ToDate.ToString(); }
+
+
+        //    //if (Code == string.Empty)
+        //    //{
+        //    //    Customer("datacustomer", CreateDate);
+        //    //    SalesOrder("saleorders", FromDate, ToDate);
+        //    //    SalesOrderDetail("orderdetail", FromDate, ToDate);
+        //    //}
+        //    //else if (Code == "datacustomer")
+        //    //{ Customer(Code,CreateDate); }
+        //    //else if (Code == "saleorders")
+        //    //{ SalesOrder(Code,FromDate, ToDate); }
+        //    //else if (Code == "orderdetail")
+        //    //{ SalesOrderDetail(Code,FromDate, ToDate); }
+        //}
     }
 }

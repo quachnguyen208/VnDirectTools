@@ -1,0 +1,17 @@
+C:\Users\VASCARA\IntegrationEndPoint\IntegrationEndPoint\obj\Debug\IntegrationEndPoint.frmIntergrationEndPoint.resources
+C:\Users\VASCARA\IntegrationEndPoint\IntegrationEndPoint\obj\Debug\IntegrationEndPoint.ProjectInstaller.resources
+C:\Users\VASCARA\IntegrationEndPoint\IntegrationEndPoint\obj\Debug\IntegrationEndPoint.csproj.GenerateResource.cache
+C:\Users\VASCARA\IntegrationEndPoint\IntegrationEndPoint\obj\Debug\IntegrationEndPoint.csproj.CoreCompileInputs.cache
+C:\Users\VASCARA\IntegrationEndPoint\IntegrationEndPoint\bin\Debug\IntegrationEndPoint.exe.config
+C:\Users\VASCARA\IntegrationEndPoint\IntegrationEndPoint\bin\Debug\IntegrationEndPoint.exe
+C:\Users\VASCARA\IntegrationEndPoint\IntegrationEndPoint\bin\Debug\IntegrationEndPoint.pdb
+C:\Users\VASCARA\IntegrationEndPoint\IntegrationEndPoint\bin\Debug\Connection.dll
+C:\Users\VASCARA\IntegrationEndPoint\IntegrationEndPoint\bin\Debug\Dapper.dll
+C:\Users\VASCARA\IntegrationEndPoint\IntegrationEndPoint\bin\Debug\Newtonsoft.Json.dll
+C:\Users\VASCARA\IntegrationEndPoint\IntegrationEndPoint\bin\Debug\Dapper.xml
+C:\Users\VASCARA\IntegrationEndPoint\IntegrationEndPoint\bin\Debug\Newtonsoft.Json.xml
+C:\Users\VASCARA\IntegrationEndPoint\IntegrationEndPoint\obj\Debug\IntegrationEndPoint.csproj.CopyComplete
+C:\Users\VASCARA\IntegrationEndPoint\IntegrationEndPoint\obj\Debug\IntegrationEndPoint.exe
+C:\Users\VASCARA\IntegrationEndPoint\IntegrationEndPoint\obj\Debug\IntegrationEndPoint.pdb
+C:\Users\VASCARA\IntegrationEndPoint\IntegrationEndPoint\obj\Debug\IntegrationEndPoint.frmRequestFinance.resources
+C:\Users\VASCARA\IntegrationEndPoint\IntegrationEndPoint\obj\Debug\IntegrationEndPoint.csproj.AssemblyReference.cache

@@ -49,7 +49,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Connection">
-      <HintPath>..\..\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\Connection.dll</HintPath>
+      <HintPath>.\Connection.dll</HintPath>
     </Reference>
     <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.2.0.35\lib\net461\Dapper.dll</HintPath>
@@ -75,13 +75,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Business\Customer_BU.cs" />
+    <Compile Include="Business\FinanceInfor_BU.cs" />
     <Compile Include="Business\ItemQuantity.cs" />
     <Compile Include="Business\SalesOrderDetail_BU.cs" />
     <Compile Include="Business\SalesOrder_BU.cs" />
+    <Compile Include="DataAccess\FinanceInforResultGrid_DA.cs" />
+    <Compile Include="DataAccess\FinanceInforResult_DA.cs" />
+    <Compile Include="DataAccess\FinanceInfor_DA.cs" />
     <Compile Include="DataAccess\Customer_DA.cs" />
     <Compile Include="DataAccess\ItemQuantityDA.cs" />
     <Compile Include="DataAccess\SalesOrderDetail_DA.cs" />
     <Compile Include="DataAccess\SalesOrder_DA.cs" />
+    <Compile Include="frmRequestFinance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRequestFinance.Designer.cs">
+      <DependentUpon>frmRequestFinance.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmIntergrationEndPoint.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +107,8 @@
       <DependentUpon>IntegrationEndPoint.cs</DependentUpon>
     </Compile>
     <Compile Include="Object\Customer_Request.cs" />
+    <Compile Include="Object\FinanceInforResult_Response.cs" />
+    <Compile Include="Object\FinanceInfor_Response.cs" />
     <Compile Include="Object\Customer_Response.cs" />
     <Compile Include="Object\EndPointRequest.cs" />
     <Compile Include="Object\ItemQuantity_Request.cs" />
@@ -130,6 +142,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmRequestFinance.resx">
+      <DependentUpon>frmRequestFinance.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmIntergrationEndPoint.resx">
       <DependentUpon>frmIntergrationEndPoint.cs</DependentUpon>
     </EmbeddedResource>
